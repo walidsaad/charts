@@ -48,6 +48,7 @@ spec:
 {{ toYaml .Values.deployment.initContainers | indent 6 }}
       {{- end }}
       {{- if .Values.nexus.nodeSelector }}
+        command: ["sh", "-c", "sudo chown -R 200:200 /nexus-data"]
       nodeSelector:
 {{ toYaml .Values.nexus.nodeSelector | indent 8 }}
       {{- end }}
@@ -78,7 +79,6 @@ spec:
 {{ toYaml .Values.nexus.env | indent 12 }}
           resources:
 {{ toYaml .Values.nexus.resources | indent 12 }}
-          command: ["sh", "-c", "sudo chown -R 200:200 /nexus-data"]
           ports:
             - containerPort: {{ .Values.nexus.dockerPort }}
               name: nexus-docker-g
