@@ -78,7 +78,7 @@ spec:
 {{ toYaml .Values.nexus.env | indent 12 }}
           resources:
 {{ toYaml .Values.nexus.resources | indent 12 }}
-          command: ["sh", "-c", "chown -R 200:200 /nexus-data"]
+          command: ["sh", "-c", "sudo chown -R 200:200 /nexus-data"]
           ports:
             - containerPort: {{ .Values.nexus.dockerPort }}
               name: nexus-docker-g
