@@ -50,7 +50,7 @@ spec:
       {{- if .Values.nexus.nodeSelector }}
         - name: volume-mount-hack
           image: busybox
-          command: ["sh", "-c", "chmod 777 /nexus/data && chown -R 200:200 /nexus-data"]
+          command: ["sh", "-c", "chmod 777 /nexus-data && chown -R 200:200 /nexus-data"]
           volumeMounts:
           - name: jenkins-pv-claim
             mountPath: /nexus-data
